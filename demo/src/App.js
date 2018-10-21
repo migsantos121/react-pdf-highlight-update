@@ -51,7 +51,8 @@ const HighlightPopup = ({ comment, onRemove }) =>
     </div>
   ) : null;
 
-const DEFAULT_URL = "https://arxiv.org/pdf/1708.08021.pdf";
+// const DEFAULT_URL = "https://arxiv.org/pdf/1708.08021.pdf";
+const DEFAULT_URL = "http://127.0.0.1:8080/pdf/hebrew.pdf";
 
 const searchParams = new URLSearchParams(location.search);
 const url = searchParams.get("url") || DEFAULT_URL;
