@@ -13,6 +13,7 @@ import "../style/PdfHighlighter.css";
 import getBoundingRect from "../lib/get-bounding-rect";
 import getClientRects from "../lib/get-client-rects";
 import getAreaAsPng from "../lib/get-area-as-png";
+import { highLight2styles } from "../lib/highLight2styles";
 
 import {
   getPageFromRange,
@@ -69,6 +70,8 @@ type Props<T_HT> = {
   onScrollChange: () => void,
   scrollRef: (scrollTo: (highlight: T_Highlight) => void) => void,
   pdfDocument: T_PDFJS_Document,
+  bkHighlightNocallback: Array<string>,
+  ulHighlightNocallback: Array<string>,
   onSelectionFinished: (
     position: T_ScaledPosition,
     content: { text?: string, image?: string },
@@ -354,6 +357,7 @@ class PdfHighlighter<T_HT: T_Highlight> extends Component<
   }
 
   onTextLayerRendered = () => {
+    highLight2styles(this.containerNode, this.props.bkHighlightNocallback, this.props.ulHighlightNocallback);
     this.renderHighlights();
   };
 
@@ -399,6 +403,7 @@ class PdfHighlighter<T_HT: T_Highlight> extends Component<
     this.viewer.currentScaleValue = "auto";
 
     scrollRef(this.scrollTo);
+
   };
 
   onSelectionChange = () => {

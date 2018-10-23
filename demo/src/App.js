@@ -53,6 +53,8 @@ const HighlightPopup = ({ comment, onRemove }) =>
 
 // const DEFAULT_URL = "https://arxiv.org/pdf/1708.08021.pdf";
 const DEFAULT_URL = "http://127.0.0.1:8080/pdf/hebrew.pdf";
+const highlightArray1 = ["תובענה", "תמרוקים"]; //dark yellow background
+const highlightArray2 = ["העוסק", "חברה"]; //dark yellow underline
 
 const searchParams = new URLSearchParams(location.search);
 const url = searchParams.get("url") || DEFAULT_URL;
@@ -167,6 +169,8 @@ class App extends Component<Props, State> {
 
                   this.scrollToHighlightFromHash();
                 }}
+                bkHighlightNocallback={highlightArray1}//dark yellow background
+                ulHighlightNocallback={highlightArray2}//dark yellow underline
                 onSelectionFinished={(
                   position,
                   content,
